@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Branch } from '../interfaces/branch';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient ) {}
 
-  getBranchesByIdERepositorio(user: string, repo: string, token: string): Observable<Branch[]>{
-    let options = {headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `token ${token}` })}
-    return this.httpClient.get<Branch[]>(this.url + '/' + user + '/' + repo + '/branches', options)
+  getBranchesByIdERepositorio(user: User): Observable<Branch[]>{
+    let options = {headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `token ${user.token}` })}
+    return this.httpClient.get<Branch[]>(this.url + '/' + user.id + '/' + user.repository + '/branches', options)
     .pipe(
       retry(2),
       catchError(this.handleError))
