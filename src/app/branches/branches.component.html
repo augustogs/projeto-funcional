@@ -1,0 +1,12 @@
+<div class="filtros">
+    <button>Filtrar branches não protegidas</button>
+    <button>Ordenar por nome</button>  
+</div>
+<button (click)="getForm()">Nova consulta</button>
+
+<div id="list">
+    <ul id="myUL" *ngFor="let branch of branches">
+        <li>Branch: {{branch.name}}</li>
+    </ul>
+</div>
+

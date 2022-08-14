@@ -1,23 +1,2 @@
-<div class="main">
-
-    <div class="form">
-      <input [(ngModel)]="user.id" type="text" placeholder="user id">
-      <input [(ngModel)]="user.repository" type="text" placeholder="repository name">
-      <input [(ngModel)]="user.token" type="text" placeholder="token">
-      <button id="search" type="submit" (click)="getBranches()">Submit</button>
-    </div>
-    
-    <div id="list">
-      <ul id="myUL" *ngFor="let branch of branches">
-          <li>{{branch.name}}</li>
-      </ul>
-    </div>
-    
-    <div class="filtros">
-      <button>Filtrar branches não protegidas</button>
-      <button>Ordenar por nome</button>
-    </div>
-    
-</div>
-    
+<router-outlet></router-outlet>
     
