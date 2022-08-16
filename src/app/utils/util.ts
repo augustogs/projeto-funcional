@@ -56,3 +56,11 @@ export function nameToUpperCase(b:Branch) {
 		protected: b.protected
 	}
 }
+
+export function nameFiveFirstChar(b:Branch) {
+	return {
+		name: b.name.substring(0,5),
+    	commit: b.commit,
+		protected: b.protected
+	}
+}
