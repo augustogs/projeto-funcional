@@ -86,6 +86,10 @@ export function nameFiveFirstChar(b:Branch) {
 	}
 }
 
-export function concatNameFirstChar(b:Branch, acc:string) {
-	return acc.concat(b.name.substring(0,1))
+export function concatNameFirstChar(b:Branch, acc:Branch) {
+    return {
+		name: acc.name.concat(b.name.substring(0,1)),
+		commit: acc.commit,
+		protected: acc.protected
+	}
 }
