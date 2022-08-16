@@ -12,7 +12,7 @@ export class ApiService {
   
   url = 'https://api.github.com/repos';
 
-  constructor(private httpClient: HttpClient ) {}
+  constructor(private httpClient: HttpClient) {}
 
   getBranchesByIdERepositorio(user: User): Observable<Branch[]>{
     let options = {headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `token ${user.token}`})}

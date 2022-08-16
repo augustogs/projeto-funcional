@@ -4,13 +4,23 @@
         <button (click)="getForm()">Nova consulta</button>
     </div>
     <div class="filtros">
-        <button (click)="resetBranches()">Resetar branches</button>  
-        <button (click)="getToLowerCase()">Colocar nome em lowercase</button>
         <button (click)="getBranchesOrderedByName()">Ordenar por nome</button>
-        <button (click)="getDuplicateBranches()">Duplicar branches</button>
         <button (click)="getProtectedBranches()">Filtrar por protegidas</button>
         <button (click)="getUnprotectedBranches()">Filtrar por desprotegidas</button>
-        <button (click)="getDistinct()">Filtrar por distintos</button>   
+        <button (click)="getDistinct()">Aplicar distinct</button>   
+        <button (click)="foldConcatFistCharName()">Aplicar fold usando concatenar primeiro char do nome</button>   
+        <button (click)="composeUpperNameFiveFirstChar()">Aplicar compose usando primeiros cinco chars e uppercase</button>
+        <button (click)="composeConcatFistCharInvertName()">Aplicar compose usando concatenar primeiro char e inverter nome</button>
+        <hr>
+        <button (click)="resetBranches()">Resetar branches</button>  
+        <button (click)="invertBranchs()">Inverter branches</button>  
+        <button (click)="getToLowerCase()">Colocar nome em lowercase</button>
+        <button (click)="getToUpperCase()">Colocar nome em uppercase</button>
+        <button (click)="invertBranchsName()">Inverter nome</button>
+        <button (click)="concatFistCharName()">Concatenar primeiro char do nome</button>
+        <button (click)="getNameFiveFirstChar()">Substituir nome pelos cinco primeiros chars</button>
+        <button (click)="getDuplicateBranches()">Duplicar branches</button>
+
     </div> 
     <div class="list">
         <ul class="myUL" *ngFor="let branch of branches">

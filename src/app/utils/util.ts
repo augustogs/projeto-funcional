@@ -26,7 +26,7 @@ export function groupBy(key: any, data: Branch[]): any {
 }
 
 export function fold(f:Function, acumulador:any, array: any[]) {
-	for (const a of array) {
+	for (let a of array) {
 		acumulador = f(a,acumulador)
 	}
 	return acumulador
@@ -94,10 +94,22 @@ export function nameFiveFirstChar(b:Branch) {
 	}
 }
 
-export function concatNameFirstChar(b:Branch, acc:Branch) {
+export function concatNameFirstCharAcc(b:Branch, acc:Branch) {
     return {
 		name: acc.name.concat(b.name.substring(0,1)),
 		commit: acc.commit,
 		protected: acc.protected
 	}
+}
+
+export function concatNameFirstChar(branch: Branch) {
+	return concatNameFirstCharAcc(branch, branch)
+}
+
+export function invertName(branch: Branch) {
+    return {
+    name: branch.name.split('').reverse().join(''),
+    commit: branch.commit,
+    protected: branch.protected
+    }
 }
