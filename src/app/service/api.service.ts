@@ -30,6 +30,7 @@ export class ApiService {
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
     console.log(errorMessage);
+    window.alert(`Opsss! Você tomou o seguinte erro: ${error.status}`);
     return throwError(errorMessage);
   };
 }

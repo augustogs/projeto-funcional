@@ -3,6 +3,8 @@ import { Branch } from '../interfaces/branch';
 import { User } from '../interfaces/user';
 import { ApiService } from '../service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { groupBy, orderBy } from '../utils/util';
 @Component({
   selector: 'app-branches',
   templateUrl: './branches.component.html',
@@ -28,12 +30,13 @@ export class BranchesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBranches();
+    this.getBranchesOrderedByName();
   }
 
-  getBranches() {    
+  getBranchesOrderedByName() {    
     this.apiService.getBranchesByIdERepositorio(this.user).subscribe((branches: Branch[]) => {
-      this.branches = branches;
+      const key = this.branches[0]
+      this.branches = orderBy(key, branches);
     });
   }
 
