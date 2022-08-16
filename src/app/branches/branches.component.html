@@ -9,7 +9,8 @@
         <button (click)="getBranchesOrderedByName()">Ordenar por nome</button>
         <button (click)="getDuplicateBranches()">Duplicar branches</button>
         <button (click)="getProtectedBranches()">Filtrar por protegidas</button>
-        <button (click)="getUnprotectedBranches()">Filtrar por desprotegidas</button>  
+        <button (click)="getUnprotectedBranches()">Filtrar por desprotegidas</button>
+        <button (click)="getDistinct()">Filtrar por distintos</button>   
     </div> 
     <div class="list">
         <ul class="myUL" *ngFor="let branch of branches">

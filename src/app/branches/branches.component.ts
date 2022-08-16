@@ -4,7 +4,7 @@ import { User } from '../interfaces/user';
 import { ApiService } from '../service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { groupBy, nameToLowerCase, orderBy } from '../utils/util';
+import { distinct, groupBy, nameToLowerCase, orderBy } from '../utils/util';
 @Component({
   selector: 'app-branches',
   templateUrl: './branches.component.html',
@@ -59,6 +59,10 @@ export class BranchesComponent implements OnInit {
 
   getUnprotectedBranches() {
     this.branches = groupBy('protected', [...this.branches])['false']
+  }
+
+  getDistinct() {
+    this.branches = distinct([...this.branches])
   }
 
   resetBranches() {
