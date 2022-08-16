@@ -50,10 +50,7 @@ export function distinct(array: Branch[]) {
 			resp.push(b)
 		}
 	}
-
 	return resp
-
-
 }
 
 function notContains(b:Branch, array:Branch[]) {
@@ -73,13 +70,6 @@ function branchEquals(a:Branch,b:Branch) {
 	return true
 }
 
-
-
-
-
-
-
-
 export function nameToUpperCase(b:Branch) {
 	return {
 		name: b.name.toUpperCase(),
@@ -94,4 +84,8 @@ export function nameFiveFirstChar(b:Branch) {
     	commit: b.commit,
 		protected: b.protected
 	}
+}
+
+export function concatNameFirstChar(b:Branch, acc:string) {
+	return acc.concat(b.name.substring(0,1))
 }
