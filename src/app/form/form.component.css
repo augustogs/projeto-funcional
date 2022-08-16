@@ -1,0 +1,31 @@
+
+.form {
+    height: 50vh;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(36, 156, 116);
+    color: white;
+}
+
