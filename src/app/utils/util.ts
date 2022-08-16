@@ -78,6 +78,14 @@ export function nameToUpperCase(b:Branch) {
 	}
 }
 
+export function nameToLowerCase(b:Branch) {
+	return {
+		name: b.name.toLowerCase(),
+    	commit: b.commit,
+		protected: b.protected
+	}
+}
+
 export function nameFiveFirstChar(b:Branch) {
 	return {
 		name: b.name.substring(0,5),

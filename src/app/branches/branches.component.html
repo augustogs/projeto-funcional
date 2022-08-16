@@ -3,9 +3,13 @@
         <span>Repositório: {{user.repository}}</span>
         <button (click)="getForm()">Nova consulta</button>
     </div>
-    <div class="filtros"> 
-        <button>Filtrar branches não protegidas</button>
-        <button>Ordenar por nome</button>  
+    <div class="filtros">
+        <button (click)="resetBranches()">Resetar branches</button>  
+        <button (click)="getToLowerCase()">Colocar nome em lowercase</button>
+        <button (click)="getBranchesOrderedByName()">Ordenar por nome</button>
+        <button (click)="getDuplicateBranches()">Duplicar branches</button>
+        <button (click)="getProtectedBranches()">Filtrar por protegidas</button>
+        <button (click)="getUnprotectedBranches()">Filtrar por desprotegidas</button>  
     </div> 
     <div class="list">
         <ul class="myUL" *ngFor="let branch of branches">

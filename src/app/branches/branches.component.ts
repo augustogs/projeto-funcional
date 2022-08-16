@@ -4,7 +4,7 @@ import { User } from '../interfaces/user';
 import { ApiService } from '../service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { groupBy, orderBy } from '../utils/util';
+import { groupBy, nameToLowerCase, orderBy } from '../utils/util';
 @Component({
   selector: 'app-branches',
   templateUrl: './branches.component.html',
@@ -15,6 +15,7 @@ export class BranchesComponent implements OnInit {
   user = {} as User;
   branch = {} as Branch;
   branches: Branch[] = [];
+  branchesBackup: Branch[] = [];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
     const id: string = route.snapshot.params['id'];
@@ -30,14 +31,38 @@ export class BranchesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBranchesOrderedByName();
+    this.getBranches();
   }
 
-  getBranchesOrderedByName() {    
+  getBranches() {    
     this.apiService.getBranchesByIdERepositorio(this.user).subscribe((branches: Branch[]) => {
-      const key = this.branches[0]
-      this.branches = orderBy(key, branches);
+      this.branches = branches;
+      this.branchesBackup = [...this.branches];
     });
+  }
+
+  getToLowerCase() {
+    this.branches = [...this.branches].map(branch => nameToLowerCase(branch))
+  }
+
+  getBranchesOrderedByName() {
+    this.branches = orderBy('name', [...this.branches]);
+  }
+
+  getDuplicateBranches() {
+    this.branches = this.branches.concat([...this.branches])
+  }
+
+  getProtectedBranches() {
+    this.branches = groupBy('protected', [...this.branches])['true']
+  }
+
+  getUnprotectedBranches() {
+    this.branches = groupBy('protected', [...this.branches])['false']
+  }
+
+  resetBranches() {
+    this.branches = [...this.branchesBackup]
   }
 
   getForm() {
