@@ -25,3 +25,20 @@ export function groupBy(key: any, data: Branch[]): any {
     return result;
 }
 
+export function fold(f:Function, acumulador:any, array: any[]) {
+	for (const a of array) {
+		acumulador = f(a,acumulador)
+	}
+	return acumulador
+}
+
+
+export function compose(funs:Function[]) {
+    return function(x:any) {
+        for (var i = funs.length - 1; i >= 0; i--) {
+            x = funs[i](x);
+        }
+        return x;
+    }
+}
+
