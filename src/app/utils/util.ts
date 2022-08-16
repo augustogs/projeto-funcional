@@ -42,3 +42,17 @@ export function compose(funs:Function[]) {
     }
 }
 
+
+
+
+
+
+
+
+export function nameToUpperCase(b:Branch) {
+	return {
+		name: b.name.toUpperCase(),
+    	commit: b.commit,
+		protected: b.protected
+	}
+}
