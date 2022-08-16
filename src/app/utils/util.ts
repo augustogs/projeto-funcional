@@ -42,6 +42,37 @@ export function compose(funs:Function[]) {
     }
 }
 
+export function distinct(array: Branch[]) {
+	let resp : Branch[] = []
+
+	for(let b of array) {
+		if (notContains(b,resp)) {
+			resp.push(b)
+		}
+	}
+
+	return resp
+
+
+}
+
+function notContains(b:Branch, array:Branch[]) {
+	for(let branch of array) {
+		if (branchEquals(branch,b)) return false
+	}
+
+	return true
+}
+
+
+function branchEquals(a:Branch,b:Branch) {
+	if(a.name != b.name || 
+		a.commit.sha != b.commit.sha ||
+		a.commit.url != b.commit.url ||
+		a.protected != b.protected ) return false 
+	return true
+}
+
 
 
 
